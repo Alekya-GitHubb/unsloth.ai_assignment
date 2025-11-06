@@ -1,193 +1,142 @@
-🚀 Unsloth LLM Fine-Tuning & Reinforcement Learning Experiments
+🦥 Unsloth LLM Fine-Tuning & Reinforcement Learning Experiments
+This repository demonstrates multiple LLM fine-tuning pipelines using Unsloth — from full fine-tuning and LoRA to reinforcement learning (RLHF & GRPO) and continued pre-training.
+All experiments are executed on Google Colab (Pro) using small- to mid-scale open-weights models (Smollm2, Llama 3, Gemma 2, Phi-3, Mistral).
 
-This repository showcases a complete series of LLM fine-tuning experiments using the 🦥 Unsloth framework
-, covering everything from full fine-tuning to LoRA, reinforcement learning, and continued pretraining.
+📘 Quick Navigation
+#TaskTechniqueColab Link1️⃣Full Fine-TuningTrain all parameters on Smollm2 (135M)Open Colab 1 – Full Fine-Tuning2️⃣LoRA Fine-TuningParameter-efficient adaptation (LoRA)Open Colab 2 – LoRA Parameter-Efficient Fine-Tuning3️⃣Reinforcement LearningPreference-based RLHF setupOpen Colab 3 – Reinforcement Learning4️⃣GRPO Reasoning RLGuided Reinforcement for Prompt OptimizationOpen Colab 4 – RL with GRPO5️⃣Continued PretrainingDomain/language extensionOpen Colab 5 – Continued Pretraining
+(Tip: Replace Alekya-GitHubb/unsloth-finetuning with your repo name if different.)
 
-Each Colab notebook in this repository demonstrates a distinct methodology for adapting and enhancing open-weights language models such as Smollm2, Llama 3, Gemma 2, Phi-3, and Mistral.
+🧩 Colab 1 – Full Fine-Tuning
+Model: Smollm2-135M
+Method: Full parameter fine-tuning using 4-bit quantized Unsloth modules.
 
 
-🌈 1. Full Fine-Tuning (Colab 1)
-Notebook: 👉 Open Colab 1
-Model: smollm2-135M
-Technique: Full-parameter fine-tuning using unsloth-bnb-4bit adapters.
-🔹 Key Points
+Train all model weights end-to-end.
 
 
-Uses Unsloth’s full fine-tuning pipeline on a small LLM for demonstration.
+Define input format, tokenizer, and dataset layout.
 
 
-Explains input formats, tokenization, and dataset preparation.
+Visualize loss curves and validation accuracy.
 
 
-Includes video demonstration steps for complete workflow explanation.
+🔗 Resources:
 
 
-Flexible across chat, coding, or Q&A datasets.
+Unsloth Fine-Tuning Guide
 
 
-🔹 References
+Medium Article – LORA with Ollama
 
 
-📘 Unsloth Fine-Tuning Guide
 
+⚙️ Colab 2 – LoRA Parameter-Efficient Fine-Tuning
+Model: Smollm2-135M
+Method: Low-Rank Adaptation (LoRA).
 
-📖 Medium: LORA + Ollama Lightweight Solution
 
+Freeze base weights, train only LoRA adapters.
 
 
-⚙️ 2. LoRA Parameter-Efficient Fine-Tuning (Colab 2)
-Notebook: 👉 Open Colab 2
-Model: smollm2-135M
-Technique: Low-Rank Adaptation (LoRA) for lightweight fine-tuning.
-🔹 Key Points
+Tune parameters: r, alpha, dropout.
 
 
-Converts full fine-tuning into parameter-efficient training.
+8-10× less VRAM than full fine-tuning.
 
 
-Freezes base model weights — updates only LoRA adapter matrices.
+🔗 Resources:
 
 
-Reduces GPU memory use by up to 10×.
+LoRA Docs – Unsloth
 
 
-Configurable parameters: r, alpha, and dropout.
 
+🎯 Colab 3 – Reinforcement Learning (RLHF)
+Goal: Teach LLMs preferences via human-feedback-style signals.
 
-🔹 References
 
+Use a dataset of preferred vs rejected responses.
 
-📘 Unsloth LoRA Documentation
 
+Implement reward and policy models.
 
 
-🎯 3. Reinforcement Learning (RLHF Setup) (Colab 3)
-Notebook: 👉 Open Colab 3
-Technique: Supervised + reward-based Reinforcement Learning.
-Goal: Teach the model preference alignment using chosen vs rejected examples.
-🔹 Key Points
+Apply gradient updates with reward optimization.
 
 
-Implements a reward model and policy model setup.
+🔗 Resources:
 
 
-Simulates human feedback loops.
+Unsloth Reinforcement Learning Guide
 
 
-Demonstrates preference scoring and loss optimization.
 
+🧠 Colab 4 – Reinforcement Learning with GRPO
+Goal: Improve reasoning and logical coherence using GRPO.
 
-Visualizes policy updates during reinforcement steps.
 
+Train on problem–solution datasets.
 
-🔹 References
 
+Reward chain-of-thought explanations.
 
-📘 Unsloth RL Guide
 
+Evaluate reasoning depth and clarity.
 
 
-🧩 4. Reinforcement Learning with GRPO (Colab 4)
-Notebook: 👉 Open Colab 4
-Technique: GRPO – Guided Reinforcement for Prompt Optimization.
-Goal: Enhance reasoning ability using problem-solution datasets.
-🔹 Key Points
+🔗 Resources:
 
 
-Uses GRPO for improved logical reasoning in responses.
+Train Your Own Reasoning Model – GRPO Tutorial
 
 
-Incorporates chain-of-thought optimization.
+Unsloth Blog – RL Reasoning
 
 
-Trains the model to generalize and justify its outputs.
 
+📚 Colab 5 – Continued Pretraining
+Goal: Teach LLMs new domains, languages, or styles via unsupervised pretraining.
 
-Builds upon reinforcement pipeline with custom reward functions.
 
+Extend a checkpoint’s knowledge on new corpus.
 
-🔹 References
 
+Ideal for domain-specific models (e.g. medical, legal, mental health).
 
-📘 GRPO Tutorial
 
+Supports multi-lingual adaptation (e.g. English → Telugu).
 
-🧩 Unsloth Blog – RL Reasoning
 
+🔗 Resources:
 
 
-📚 5. Continued Pretraining (Colab 5)
-Notebook: 👉 Open Colab 5
-Technique: Continued Pretraining / Domain Adaptation.
-Goal: Make LLMs learn a new language, style, or domain.
-🔹 Key Points
+Unsloth Continued Pretraining Docs
 
 
-Performs unsupervised continued learning on new corpora.
+Medium – Fine-Tuning Phi-3 for Mental Health Chatbot
 
 
-Extends a model’s knowledge without forgetting previous tasks.
 
+🧬 Model Families Explored
+CategoryModels🦙 Meta LlamaLlama 3 (8B), Llama 3.1 (8B)💎 GemmaGemma 2 (2B & 9B)🪶 MistralMistral v0.3 (7B), Mistral NeMo (12B)🧮 PhiPhi-3 Mini & Medium🧠 Tiny ModelsSmollm2 (135M), TinyLlama (1.1B)🐦 QwenQwen2 (7B)
 
-Supports cross-lingual adaptation (e.g., English → Telugu).
-
-
-Useful for specialized domains (medical, finance, mental health, etc.).
-
-
-🔹 References
-
-
-📘 Continued Pretraining Guide
-
-
-🧠 Medium – Mental Health Chatbot Fine-Tuning Example
-
-
-
-🧩 Model Families Used
-CategoryModels Explored🦙 Meta LlamaLlama 3 (8B), Llama 3.1 (8B)🪶 MistralMistral v0.3 (7B), Mistral NeMo (12B)💎 GemmaGemma 2 (2B & 9B)🧮 PhiPhi-3 (Mini & Medium)🐦 QwenQwen2 (7B)🌱 Tiny ModelsSmollm2 (135M), TinyLlama (1.1B)
-
-⚙️ Setup Instructions
-# Clone the repository
-git clone https://github.com/<your-username>/unsloth-finetuning.git
+⚙️ Setup
+# Clone the repo
+git clone https://github.com/Alekya-GitHubb/unsloth-finetuning.git
 cd unsloth-finetuning
-
-# (Optional) Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate   # Linux/Mac
-# or
-venv\Scripts\activate     # Windows
 
 # Install core dependencies
 pip install -U unsloth transformers datasets bitsandbytes accelerate torch
 
 
-🎥 Video Walkthrough (Suggested for Submission)
-For each notebook:
-1️⃣ State the objective (e.g., “Fine-tuning Smollm2 on chat dataset”).
-2️⃣ Show key code cells and output logs.
-3️⃣ Explain the parameters and datasets used.
-4️⃣ Demonstrate inference (before and after fine-tuning).
-5️⃣ Summarize results with visual or text metrics.
+🎥 Video Demonstration Checklist
+✅ Explain each notebook’s objective.
+✅ Walk through dataset and training cells.
+✅ Highlight key metrics (loss, accuracy).
+✅ Demonstrate model inference (before vs after tuning).
+✅ Summarize results in your own voice.
 
-📊 Suggested Extensions
-
-
-🧩 Export fine-tuned models to Ollama for local deployment.
-
-
-🔁 Chain continued pretraining + LoRA for hybrid experiments.
-
-
-🤖 Integrate Unsloth + LangChain for RAG use cases.
-
-
-💬 Develop a mental-health chatbot using fine-tuned Phi-3 or Smollm2.
-
-
-
-🔗 Useful Resources
+🔗 Official References
 
 
 Unsloth Docs
@@ -202,7 +151,15 @@ Reinforcement Learning Guide
 GRPO Tutorial
 
 
-Medium – LORA with Ollama Lightweight Solution
+Medium – Ollama + LORA
 
 
 
+👩‍💻 Author
+Alekya Gudise
+🎓 MS Software Engineering, San José State University
+💼 Ex-LTIMindtree QA Engineer | Python Automation | Cisco Infrastructure
+🌐 GitHub @Alekya-GitHubb
+
+Would you like me to generate Colab “Open in Colab” badges (colored buttons) for each notebook instead of plain links?
+It’ll make the README even more polished visually.Is this conversation helpful so far?
